@@ -1,0 +1,24 @@
+<mat-card>
+  <div>
+    <form [formGroup]="formDoc" (ngSubmit)="onSubmit()" novalidate>
+      <mat-form-field>
+        <app-input-file formControlName="requiredfile" placeholder="Upload your text file" valuePlaceholder="No file selected" required></app-input-file>
+        <mat-icon matSuffix>folder</mat-icon>
+        <mat-error *ngIf="formDoc.get('requiredfile').hasError('required')">
+          Please select a file
+        </mat-error>
+        <mat-error *ngIf="formDoc.get('requiredfile').hasError('maxContentSize')">
+          The total size must not exceed {{formDoc.get('requiredfile')?.getError('maxContentSize').maxSize | byteFormat}}
+          ({{formDoc.get('requiredfile')?.getError('maxContentSize').actualSize | byteFormat}}).
+        </mat-error>
+      </mat-form-field>
+      <pre *ngIf="formDoc.get('requiredfile').errors">{{formDoc.get('requiredfile').errors | json}}</pre>
+      
+      <button type="submit" [disabled]="formDoc.invalid" mat-raised-button>
+          <mat-icon matSuffix>file_upload</mat-icon>
+        Submit</button>
+    </form>
+  </div>
+</mat-card>
+
+<app-progress-bar></app-progress-bar>
