@@ -8,10 +8,6 @@ import 'rxjs/add/operator/map' ;
   })
 
   export class ProgressBarComponent {
-
-  color = 'primary';
-  mode = 'determinate';
-  value = 50;
-  bufferValue = 75;
+    color = 'primary';
+    mode = 'indeterminate';
 }
-

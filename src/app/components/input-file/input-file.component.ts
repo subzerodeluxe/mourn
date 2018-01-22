@@ -128,6 +128,7 @@ export class InputFileComponent implements MatFormFieldControl<FileInput>, Contr
       }
     }
     this.value = new FileInput(fileArray);
+    console.log(JSON.stringify(this.value));
     this._onChange(this.value);
   }
 

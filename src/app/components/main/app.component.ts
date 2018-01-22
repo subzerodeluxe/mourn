@@ -29,7 +29,8 @@ export class AppComponent implements OnInit {
   }
 
   onSubmit() {
-    console.log('SUBMITTED', this.formDoc);
+    console.log('SUBMITTED: ' + this.formDoc.value.requiredfile._fileNames);
+
   }
 
 }
